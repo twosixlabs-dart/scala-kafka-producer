@@ -6,9 +6,9 @@ import com.worldmodelers.kafka.messages.ExampleProducerMessage
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import org.slf4j.{Logger, LoggerFactory}
 
-import scala.concurrent.{ExecutionContext, Future}
-import scala.util.{Failure, Random, Success}
 import scala.collection.JavaConverters._
+import scala.concurrent.{ExecutionContext, Future}
+import scala.util.{Failure, Success}
 
 
 class ExampleProducer( val topic : String, val properties : Properties ) {
@@ -24,6 +24,8 @@ class ExampleProducer( val topic : String, val properties : Properties ) {
     def sendRandomMessage( ) : Unit = {
         val key = UUID.randomUUID().toString
         val value = ExampleProducerMessage( key, Seq( "scala-kafka-producer" ) )
+
+        LOG.info( s"sending message : ${key}" )
 
         val message = new ProducerRecord[ String, ExampleProducerMessage ]( topic, key, value )
 
