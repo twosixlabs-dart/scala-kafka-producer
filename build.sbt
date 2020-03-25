@@ -18,7 +18,6 @@ lazy val root = ( project in file( "." ) ).settings( libraryDependencies ++= kaf
                                                                              ++ scalaTest
                                                                              ++ embeddedKafka )
 
-
 mainClass in(Compile, run) := Some( "Main" )
 
 enablePlugins( JavaAppPackaging )

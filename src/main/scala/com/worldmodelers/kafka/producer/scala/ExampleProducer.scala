@@ -26,7 +26,6 @@ class ExampleProducer( val topic : String, val properties : Properties ) {
         val value = ExampleProducerMessage( key, Seq( "scala-kafka-producer" ) )
 
         LOG.info( s"sending message : ${key}" )
-
         val message = new ProducerRecord[ String, ExampleProducerMessage ]( topic, key, value )
 
         //@formatter:off
